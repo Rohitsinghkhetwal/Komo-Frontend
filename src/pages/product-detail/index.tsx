@@ -10,7 +10,7 @@ import toast from "react-hot-toast"
 
 const ProductDetail = () => {
 
-  const [products, setProducts] = useState<IProduct[]>([]);
+  const [products, setProducts] = useState<IProduct>();
   const {id} = useParams();
   const {addToCartItem, cart} = useGlobalStore();
   console.log("Cart Items",cart);
@@ -30,7 +30,7 @@ const ProductDetail = () => {
   useEffect(() => {
     getProducts();
 
-  },[])
+  }, [])
 
   return (
     <section className=" mt-[82px]">

@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import {
   PaymentElement,
   LinkAuthenticationElement,
@@ -13,7 +13,7 @@ export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [message, setMessage] = useState<string | null | undefined>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -87,12 +87,15 @@ export default function CheckoutForm() {
   }
 
   return (
+
     // @ts-ignore
     <form id="payment-form" onSubmit={handleSubmit}>
       <LinkAuthenticationElement
-        id="link-authentication-element"
+        id="link-authentication-element" 
         // @ts-ignore
+        
         onChange={(e) => setEmail(e.target.value)}
+        
       />
       <PaymentElement id="payment-element" options={paymentElementOptions} />
       {/* <button disabled={isLoading || !stripe || !elements} id="submit">
