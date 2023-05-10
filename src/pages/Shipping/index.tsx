@@ -37,13 +37,13 @@ const ShippingAddress = () => {
 
   const {
     register,
-    setValue,
+    
     handleSubmit,
     getValues,
     formState: { errors },
   } = useForm<FormData>();
 
-  const OnSubmit = handleSubmit(async (data) => {
+  const OnSubmit = handleSubmit(async () => {
     try {
     const {name, address, city,email} = getValues()
     const OrderDetail:OrderDetails = {
