@@ -16,6 +16,8 @@ type FormData = {
   address: string;
 };
 
+// Shipping address
+
 type OrderDetails = {
     user: {
         name: string
