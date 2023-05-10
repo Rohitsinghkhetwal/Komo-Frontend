@@ -9,7 +9,7 @@ import { toast } from "react-hot-toast";
 
 const Shop = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
-  const { cart, addToCartItem } = useGlobalStore();
+  const {  addToCartItem } = useGlobalStore();
 
   const getProducts = async () => {
     try {
