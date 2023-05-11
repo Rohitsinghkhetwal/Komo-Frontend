@@ -13,7 +13,7 @@ export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [email, setEmail] = useState("");
+ 
   const [message, setMessage] = useState<string | null | undefined>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -91,7 +91,7 @@ export default function CheckoutForm() {
         id="link-authentication-element" 
         // @ts-ignore
         
-        onChange={(e) => setEmail(e.target.value)}
+       
         
       />
       <PaymentElement id="payment-element" options={paymentElementOptions} />
