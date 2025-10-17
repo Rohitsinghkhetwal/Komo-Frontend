@@ -13,7 +13,6 @@ export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
- 
   const [message, setMessage] = useState<string | null | undefined>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -31,7 +30,7 @@ export default function CheckoutForm() {
     }
 
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-        if(!paymentIntent) return
+      if(!paymentIntent) return
       switch (paymentIntent.status) {
         case "succeeded":
           setMessage("Payment succeeded!");
@@ -49,7 +48,7 @@ export default function CheckoutForm() {
     });
   }, [stripe]);
 
-  const handleSubmit = async (e: SubmitEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!stripe || !elements) {
@@ -68,11 +67,9 @@ export default function CheckoutForm() {
       },
     });
 
-    
-    
-    if (error.type === "card_error" || error.type === "validation_error") {
+    if (error?.type === "card_error" || error?.type === "validation_error") {
       setMessage(error.message);
-    } else {
+    } else if (error) {
       setMessage("An unexpected error occurred.");
     }
 
@@ -84,26 +81,16 @@ export default function CheckoutForm() {
   }
 
   return (
-
-    // @ts-ignore
     <form id="payment-form" onSubmit={handleSubmit}>
-      <LinkAuthenticationElement
-        id="link-authentication-element" 
-        // @ts-ignore
-        
-       
-        
-      />
+      <LinkAuthenticationElement id="link-authentication-element" />
       <PaymentElement id="payment-element" options={paymentElementOptions} />
-     
-        {/* //buttons */}
+      {/* //buttons */}
       <div className="flex justify-end">
-      <Button disabled={isLoading || !stripe || !elements} id="submit" className="mt-7">
-      <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
-        </span>
-
-      </Button>
+        <Button disabled={isLoading || !stripe || !elements} id="submit" className="mt-7">
+          <span id="button-text">
+            {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
+          </span>
+        </Button>
       </div>
       {/* Show any error or success messages */}
       {message && <div id="payment-message">{message}</div>}

@@ -1,4 +1,5 @@
 import clsx from "clsx"
+
 type Variant = "heading-one" 
 | "heading-two"
 | "heading-three" 
@@ -22,27 +23,24 @@ type textProps = {
 }
 
 const variants: Record<Variant, string>= {
-    "heading-one": "text-[50px] font-bold leading-[64px] text-raisin-black",
-    "heading-two": "text-[40px] font-bold leading-[51px] text-raisin-black",
-    "heading-three": "text-[32px] font-bold leading-[41px] text-raisin-black",
-    "heading-four": "text-[24px] font-bold leading-[31px] text-raisin-black",
-    "subheading-one": "text-[28px] font-semibold leading-[42px] text-raisin-black",
-    "subheading-two": "text-[20px] font-semibold leading-[30px] text-raisin-black",
+    "heading-one": "font-bold text-3xl leading-9 md:text-5xl md:leading-[64px]",
+    "heading-two": "font-bold text-2xl leading-8 md:text-4xl md:leading-[51px]",
+    "heading-three": "font-bold text-xl leading-7 md:text-2xl md:leading-[41px]",
+    "heading-four": "font-bold text-lg leading-[28px] md:text-2xl md:leading-[31px]",
+    "subheading-one": "font-semibold text-lg leading-8 md:text-2xl md:leading-[42px]",
+    "subheading-two": "font-semibold text-base leading-6 md:text-xl md:leading-[30px]",
     "subheading-three": "text-base font-semibold",
-    "body-one": "text-[28px] leading-[42px] text-raisin-black",
-    "body-two": "text-xl leading-[30px] text-raisin-black",
-    "body-three": "text-base text-raisin-black",
-    "caption-one": "uppercase text-base text-raisin-black",
-    "caption-two": "uppercase text-base font-semibold text-raisin-black",
-    "caption-three": "uppercase text-base font-semibold text-raisin-black",
-    "caption-four": "uppercase text-xs leading-[18px] text-raisin-black"
-     
-
+    "body-one": "text-lg leading-8 md:text-2xl md:leading-[42px]",
+    "body-two": "text-base leading-6 md:text-xl md:leading-[30px]",
+    "body-three": "text-sm md:text-base",
+    "caption-one": "uppercase text-xs md:text-base",
+    "caption-two": "uppercase text-xs md:text-base font-semibold",
+    "caption-three": "uppercase text-xs md:text-base font-semibold",
+    "caption-four": "uppercase text-[10px] leading-[14px] md:text-xs md:leading-[18px]"
 }
 
-
 const Text = ({children, variant = "heading-one", className}: textProps) => {
-  return <p className={clsx(variants[variant], className)}>{children}</p>
+  return <p className={clsx("text-raisin-black", variants[variant], className)}>{children}</p>
 }
 
 export default Text
